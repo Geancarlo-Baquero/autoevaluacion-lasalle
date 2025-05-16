@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Logro</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { color: #003366; }
+    ul { padding-left: 20px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2 id="titulo"></h2>
+  <ul id="listaLogros"></ul>
+
+  <script>
+    const logrosPorEje = [
+      {
+        eje: "Gestión Institucional",
+        logros: [
+          "Se fortalecieron los procesos de planeación estratégica.",
+          "Se implementó un sistema integrado de gestión institucional."
+        ]
+      },
+      {
+        eje: "Académico",
+        logros: [
+          "Mejoramiento de los planes de estudio.",
+          "Fortalecimiento del cuerpo docente."
+        ]
+      },
+      {
+        eje: "Investigación",
+        logros: [
+          "Incremento de grupos categorizados en Colciencias.",
+          "Mayor participación en convocatorias nacionales."
+        ]
+      },
+      {
+        eje: "Proyección Social",
+        logros: [
+          "Aumento en el número de convenios con comunidades.",
+          "Ejecución de proyectos de impacto social."
+        ]
+      },
+      {
+        eje: "Bienestar",
+        logros: [
+          "Programas de salud física y mental consolidados.",
+          "Ampliación de espacios deportivos y culturales."
+        ]
+      },
+      {
+        eje: "Internacionalización",
+        logros: [
+          "Participación en redes internacionales.",
+          "Movilidad estudiantil y docente fortalecida."
+        ]
+      }
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id")) - 1;
+
+    const titulo = document.getElementById("titulo");
+    const lista = document.getElementById("listaLogros");
+
+    if (logrosPorEje[id]) {
+      titulo.textContent = `Eje ${id + 1}: ${logrosPorEje[id].eje}`;
+      logrosPorEje[id].logros.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        lista.appendChild(li);
+      });
+    } else {
+      titulo.textContent = "Eje no encontrado";
+    }
+  </script>
+</body>
+</html>

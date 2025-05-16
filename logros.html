@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Logros</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    h2 { color: #003366; }
+    .button {
+      display: block;
+      padding: 10px;
+      margin: 10px auto;
+      background-color: #005baa;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      width: 80%;
+    }
+    .button:hover {
+      background-color: #004080;
+    }
+  </style>
+</head>
+<body>
+  <h2>Logros por Ejes</h2>
+  <div id="logrosContainer"></div>
+
+  <script>
+    const logros = [
+      "Gestión Institucional",
+      "Académico",
+      "Investigación",
+      "Proyección Social",
+      "Bienestar",
+      "Internacionalización"
+    ];
+
+    const container = document.getElementById('logrosContainer');
+    logros.forEach((nombre, i) => {
+      const link = document.createElement('a');
+      link.className = 'button';
+      link.href = `logro.html?id=${i + 1}`;
+      link.textContent = `${i + 1}. Eje: ${nombre}`;
+      container.appendChild(link);
+    });
+  </script>
+</body>
+</html>

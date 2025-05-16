@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Factor</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { color: #003366; }
+  </style>
+</head>
+<body>
+  <h2 id="titulo"></h2>
+  <ul id="caracteristicas"></ul>
+
+  <script>
+    const factores = [
+      {
+        nombre: "Identidad Institucional",
+        caracteristicas: [
+          "Característica 1. Coherencia y pertinencia de la misión.",
+          "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces.",
+          "Característica 3. Formación integral y construcción de identidad."
+        ]
+      },
+      // Agrega aquí los otros factores con sus características si es necesario
+    ];
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id')) - 1;
+
+    if (factores[id]) {
+      document.getElementById('titulo').textContent = `${id + 1}. ${factores[id].nombre}`;
+      const lista = document.getElementById('caracteristicas');
+      factores[id].caracteristicas.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        lista.appendChild(li);
+      });
+    } else {
+      document.getElementById('titulo').textContent = 'Factor no encontrado';
+    }
+  </script>
+</body>
+</html>

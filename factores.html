@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Factores</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    h2 { color: #003366; }
+    .button {
+      display: block;
+      padding: 10px;
+      margin: 10px auto;
+      background-color: #005baa;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      width: 80%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Factores</h2>
+  <div id="listaFactores"></div>
+
+  <script>
+    const factores = [
+      "Identidad Institucional",
+      "Gobierno Institucional y Transparencia",
+      "Desarrollo, Gestión y Sostenibilidad Institucional",
+      "Mejoramiento Continuo y Autorregulación",
+      "Estructura y Procesos Académicos",
+      "Aportes de la Investigación, la Innovación, el Desarrollo Tecnológico y la Creación al Entorno",
+      "Impacto Social",
+      "Visibilidad Nacional e Internacional",
+      "Bienestar Institucional",
+      "Comunidad de Profesores",
+      "Comunidad de Estudiantes",
+      "Comunidad de Egresados"
+    ];
+
+    const contenedor = document.getElementById('listaFactores');
+    factores.forEach((factor, i) => {
+      const link = document.createElement('a');
+      link.className = 'button';
+      link.href = `factor.html?id=${i + 1}`;
+      link.textContent = `${i + 1}. ${factor}`;
+      contenedor.appendChild(link);
+    });
+  </script>
+</body>
+</html>
