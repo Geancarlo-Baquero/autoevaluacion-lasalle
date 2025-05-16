@@ -2,50 +2,830 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Factores</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      text-align: center; 
+      margin: 0;
+    }
+    
     h2 { color: #003366; }
+    
     .button {
       display: block;
-      padding: 10px;
-      margin: 10px auto;
-      background-color: #005baa;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #004080;
+    }
+
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .home-link {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .home-link:hover {
+      transform: scale(1.2);
+    }
+
+    .home-icon {
+      font-size: 24px;
+    }
+
+    h1 {
+      margin: 0 auto;
+      font-size: 2rem;
+      width: 100%;
+      text-align: center;
+    }
+    
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }
+    
+    /* Estilos para el contenido desplegable */
+    .factor-contenido {
+      display: none;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .factor-contenido h3 {
+      color: #003057;
+      margin-top: 0;
+    }
+    
+    .factor-contenido ul {
+      padding-left: 20px;
+    }
+    
+    .factor-contenido li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Modificación del botón para indicar que es desplegable */
+    .button {
+      display: block;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #004080;
+    }
+
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }
+    
+    /* Estilos para el contenido desplegable */
+    .factor-contenido {
+      display: none;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .factor-contenido h3 {
+      color: #003057;
+      margin-top: 0;
+    }
+    
+    .factor-contenido ul {
+      padding-left: 20px;
+    }
+    
+    .factor-contenido li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Modificación del botón para indicar que es desplegable */
+    .button {
+      display: block;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #004080;
+    }
+
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
     }
   </style>
 </head>
 <body>
-  <h2>Factores</h2>
+  <header>
+    <div class="header-content">
+      <a href="index.html" class="home-link" title="Volver a inicio">
+        <span class="home-icon">🏠</span>
+      </a>
+      <h1>Factores</h1>
+    </div>
+  </header>
+
+  <!-- Encabezado superior -->
+  <div class="top-header">
+    <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
+    <form id="searchForm" onsubmit="buscarContenido(event)">
+      <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+    </form>
+    <div class="icons">
+      <span title="Usuario">👤</span>
+    </div>
+  </div>
+
   <div id="listaFactores"></div>
+
 
   <script>
     const factores = [
-      "Identidad Institucional",
-      "Gobierno Institucional y Transparencia",
-      "Desarrollo, Gestión y Sostenibilidad Institucional",
-      "Mejoramiento Continuo y Autorregulación",
-      "Estructura y Procesos Académicos",
-      "Aportes de la Investigación, la Innovación, el Desarrollo Tecnológico y la Creación al Entorno",
-      "Impacto Social",
-      "Visibilidad Nacional e Internacional",
-      "Bienestar Institucional",
-      "Comunidad de Profesores",
-      "Comunidad de Estudiantes",
-      "Comunidad de Egresados"
+      {
+        nombre: "Identidad Institucional",
+        caracteristicas: [
+          "Característica 1. Coherencia y pertinencia de la misión.",
+          "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces.",
+          "Característica 3. Formación integral y construcción de identidad."
+        ]
+      },
+      {
+        nombre: "Gobierno Institucional y Transparencia",
+        caracteristicas: [
+          "Característica 4. Buen gobierno y máximo órgano de gobierno.",
+          "Característica 5. Relación con grupos de interés.",
+          "Característica 6. Rendición de cuentas."
+        ]
+      },
+      {
+        nombre: "Desarrollo, Gestión y Sostenibilidad Institucional",
+        caracteristicas: [
+          "Característica 7. Administración y gestión.",
+          "Característica 8. Procesos de comunicación.",
+          "Característica 9. Capacidad de gestión financiera."
+        ]
+      },
+      {
+        nombre: "Mejoramiento Continuo y Autorregulación",
+        caracteristicas: [
+          "Característica 10. Sistemas de autoevaluación.",
+          "Característica 11. Aseguramiento interno de la calidad.",
+          "Característica 12. Resultados de la autorregulación."
+        ]
+      },
+      {
+        nombre: "Estructura y Procesos Académicos",
+        caracteristicas: [
+          "Característica 13. Políticas académicas.",
+          "Característica 14. Gestión de la actividad académica.",
+          "Característica 15. Procesos de creación, modificación y ampliación de programas académicos."
+        ]
+      },
+      {
+        nombre: "Aportes de la Investigación, la Innovación, el Desarrollo Tecnológico y la Creación al Entorno",
+        caracteristicas: [
+          "Característica 16. Formación para la investigación.",
+          "Característica 17. Investigación, desarrollo tecnológico, innovación y creación."
+        ]
+      },
+      {
+        nombre: "Impacto Social",
+        caracteristicas: [
+          "Característica 18. Institución y entorno.",
+          "Característica 19. Graduados."
+        ]
+      },
+      {
+        nombre: "Visibilidad Nacional e Internacional",
+        caracteristicas: [
+          "Característica 20. Inserción de la institución en contextos académicos nacionales e internacionales."
+        ]
+      },
+      {
+        nombre: "Bienestar Institucional",
+        caracteristicas: [
+          "Característica 21. Estructura y funcionamiento del bienestar institucional."
+        ]
+      },
+      {
+        nombre: "Comunidad de Profesores",
+        caracteristicas: [
+          "Característica 22. Derechos y deberes de los profesores.",
+          "Característica 23. Planta profesoral.",
+          "Característica 24. Trayectoria profesoral.",
+          "Característica 25. Desarrollo profesoral."
+        ]
+      },
+      {
+        nombre: "Comunidad de Estudiantes",
+        caracteristicas: [
+          "Característica 26. Derechos y deberes de los estudiantes.",
+          "Característica 27. Admisión y permanencia de estudiantes.",
+          "Característica 28. Estímulos y apoyos para estudiantes."
+        ]
+      },
+      {
+        nombre: "Comunidad de Egresados",
+        caracteristicas: [
+          "Característica 29. Seguimiento a egresados.",
+          "Característica 30. Experiencia del egresado en la dinámica institucional."
+        ]
+      }
     ];
 
     const contenedor = document.getElementById('listaFactores');
+    
+    // Crear los botones de factores con su contenido desplegable justo después
     factores.forEach((factor, i) => {
-      const link = document.createElement('a');
+      // Crear un div contenedor para cada factor y su contenido
+      const factorContainer = document.createElement('div');
+      factorContainer.className = 'factor-container';
+      
+      // Crear el botón
+      const link = document.createElement('button');
       link.className = 'button';
-      link.href = `factor.html?id=${i + 1}`;
-      link.textContent = `${i + 1}. ${factor}`;
-      contenedor.appendChild(link);
+      link.textContent = `${i + 1}. ${factor.nombre}`;
+      link.setAttribute('data-index', i);
+      
+      // Crear el contenedor para el contenido desplegable
+      const contenido = document.createElement('div');
+      contenido.className = 'factor-contenido';
+      contenido.id = `factor-${i}`;
+      
+      // Agregar título
+      const titulo = document.createElement('h3');
+      titulo.textContent = `${i + 1}. ${factor.nombre}`;
+      contenido.appendChild(titulo);
+      
+      // Agregar lista de características
+      const lista = document.createElement('ul');
+      factor.caracteristicas.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c;
+        lista.appendChild(li);
+      });
+      contenido.appendChild(lista);
+      
+      // Agregar el botón y su contenido al contenedor
+      factorContainer.appendChild(link);
+      factorContainer.appendChild(contenido);
+      
+      // Agregar el contenedor al DOM
+      contenedor.appendChild(factorContainer);
+      
+      // Agregar evento de clic
+      link.addEventListener('click', function() {
+        const factorId = `factor-${this.getAttribute('data-index')}`;
+        const factorContenido = document.getElementById(factorId);
+        
+        // Cerrar todos los demás
+        document.querySelectorAll('.factor-contenido').forEach(el => {
+          if (el.id !== factorId) {
+            el.classList.remove('activo');
+          }
+        });
+        
+        // Quitar clase 'abierto' de todos los botones
+        document.querySelectorAll('.button').forEach(btn => {
+          if (btn !== this) {
+            btn.classList.remove('abierto');
+          }
+        });
+        
+        // Alternar el estado del actual
+        this.classList.toggle('abierto');
+        factorContenido.classList.toggle('activo');
+        
+        // Hacer scroll al contenido si está abierto
+        if (factorContenido.classList.contains('activo')) {
+          factorContenido.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
+    
+    // Función de búsqueda
+    function buscarContenido(event) {
+      event.preventDefault(); // Evita que el formulario se envíe
+      
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      if (!searchTerm) return; // No buscar si está vacío
+      
+      // Elementos donde buscaremos (puedes agregar más)
+      const elementos = document.querySelectorAll('h1, h2, h3, p, a, .button');
+      
+      // Limpiar resaltados anteriores
+      document.querySelectorAll('.resaltado').forEach(el => {
+        el.classList.remove('resaltado');
+        el.style.backgroundColor = '';
+      });
+      
+      // Buscar en los elementos
+      let primerElementoEncontrado = null;
+      
+      elementos.forEach(elemento => {
+        if (elemento.innerText.toLowerCase().includes(searchTerm)) {
+          // Resaltar temporalmente
+          elemento.style.backgroundColor = '#F2A900';
+          elemento.style.transition = 'background-color 0.5s';
+          elemento.classList.add('resaltado');
+          
+          // Guardar referencia al primer elemento encontrado
+          if (!primerElementoEncontrado) {
+            primerElementoEncontrado = elemento;
+          }
+        }
+      });
+      
+      // Hacer scroll al primer elemento encontrado
+      if (primerElementoEncontrado) {
+        primerElementoEncontrado.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+        
+        // Volver al color original después de 3 segundos
+        setTimeout(() => {
+          document.querySelectorAll('.resaltado').forEach(el => {
+            el.style.backgroundColor = '';
+          });
+        }, 3000);
+      }
+    }
   </script>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
+    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -5,7 +5,54 @@
   <title>Logros</title>
   <style>
     body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-    h2 { color: #003366; }
+    /* Franja azul con título */
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+     /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+
+    /* Botones */ 
     .button {
       display: block;
       padding: 10px;
@@ -19,10 +66,42 @@
     .button:hover {
       background-color: #004080;
     }
+
+    .footer {
+    background-color: #003057;
+    color: white;
+    padding: 15px 30px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+  }
+
+  .left, .right {
+    font-size: 14px;
+  }
+
   </style>
 </head>
 <body>
-  <h2>Logros por Ejes</h2>
+   <header>
+    <h1>Logros</h1>
+  </header>
+
+  <!-- Encabezado superior -->
+  <div class="top-header">
+    <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
+    <form id="searchForm" onsubmit="buscarContenido(event)">
+      <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+    </form>
+    <div class="icons">
+      <span title="Usuario">👤</span>
+    </div>
+  </div>
+
   <div id="logrosContainer"></div>
 
   <script>
@@ -44,5 +123,13 @@
       container.appendChild(link);
     });
   </script>
+
+  <footer class="footer">
+  <div class="footer-content">
+    <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
+    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
+  </div>
+</footer>
+
 </body>
 </html>

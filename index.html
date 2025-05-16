@@ -1,55 +1,376 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Autoevaluación Institucional La Salle</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      text-align: center;
+      * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  header {
+    background-color: #003057;
+    color: white;
+    padding: 20px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+
+    /* Franja azul con título */
     header {
-      background-color: #003366;
+      background-color: #003057;
       color: white;
       padding: 20px;
     }
+
     h1 {
       margin: 0;
     }
+
+  @keyframes zoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}  
+
+    /* Carrusel */
+  .carousel {
+  position: relative;
+  width: 100%;
+  height: 550px; /* tamaño fijo para el carrusel */
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #003057;
+}
+
+.carousel img {
+  position: absolute;   /* Para que las imágenes estén apiladas */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* recorta para llenar el contenedor */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel img.active {
+  opacity: 1;
+  position: relative; /* o absolute si prefieres, pero mantener */
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 48, 87, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+ .carousel-btn.prev {
+  left: 15px;
+}
+
+.carousel-btn.next {
+  right: 15px;
+}
+
+    /* Botones */
     .container {
-      margin: 30px auto;
-      max-width: 600px;
+    margin: 30px auto;
+    max-width: 900px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 15px;
     }
-    .button {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      font-size: 18px;
-      background-color: #005baa;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .button:hover {
-      background-color: #004080;
-    }
-  </style>
+
+  .button {
+    flex: 1 1 200px;
+    max-width: 300px;
+    padding: 15px 25px;
+    font-size: 18px;
+    background-color: #003057;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .button:hover {
+    background-color: #004080;
+  }
+
+  .footer {
+    background-color: #003057;
+    color: white;
+    padding: 15px 30px;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+  }
+
+  .left, .right {
+    font-size: 14px;
+  }
+
+ .imagenes-tres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto;
+  max-width: 1000px;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.imagenes-tres img {
+  flex: 1 1 30%;
+  max-width: 300px; /* Limita el tamaño máximo en escritorio */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.resaltado {
+    background-color: #F2A900;
+    transition: background-color 0.5s;
+  }
+
+   /* 📱 Responsive para celulares */
+ @media (max-width: 768px) {
+  .carousel {
+    height: 350px;
+  }
+  .imagenes-tres {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagenes-tres img {
+    max-width: 80%; /* Reduce el tamaño en celular */
+    margin-bottom: 20px;
+  }
+  
+  .top-header .search-box {
+    width: 50%; /* Ajuste para tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel {
+    height: 250px;
+  }
+
+  .carousel-btn {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  .top-header .search-box {
+    width: 40%; /* Ajuste para móviles pequeños */
+  }
+}
+</style>
+
 </head>
 <body>
+
+  <!-- Franja azul con título -->
   <header>
     <h1>Autoevaluación Institucional La Salle</h1>
   </header>
 
+  <!-- Encabezado superior -->
+  <div class="top-header">
+    <img src="imagenes/Logosimbolo_color.png" alt="Logo La Salle" class="logo">
+    <form id="searchForm" onsubmit="buscarContenido(event)">
+      <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
+    </form>
+    <div class="icons">
+      <span title="Usuario">👤</span>
+    </div>
+  </div>
+
+  <!-- Carrusel de imágenes -->
+  <div class="carousel" id="carousel">
+    <img src="imagenes/la salle 2.jpeg" alt="Banner 1" class="active">
+    <img src="imagenes/fondo 2.png" alt="Banner 2">
+    <img src="imagenes/Registro fotografico Equipo Taller de ponderacion.jpg" alt="Banner 3">
+    <img src="imagenes/Taller de Ponderación saludo inicial_7.jpg" alt="Banner 4">
+    <img src="imagenes/TFocal1.jpeg" alt="Banner 5">
+    <img src="imagenes/Taller de Ponderación - Reunión de los grupos de trabajo por factor,_30.jpg" alt="Banner 6">
+    <!-- Agrega más imágenes si lo deseas -->
+    <!-- Flechas -->
+    <button class="carousel-btn prev">&#10094;</button>
+    <button class="carousel-btn next">&#10095;</button>
+  </div>
+
+  <!-- Botones de navegación -->
   <div class="container">
     <a href="factores.html" class="button">1. Factores</a>
     <a href="logros.html" class="button">2. Logros</a>
   </div>
+  
+  <div class="imagenes-tres">
+    <img src="imagenes/image007.png" alt="Imagen Izquierda">
+    <img src="imagenes/Juana-removebg-preview.png" alt="Imagen Centro">
+    <img src="imagenes/image008.png" alt="Imagen Derecha">
+  </div>
+
+  <!-- Script para cambiar las imágenes del carrusel -->
+  <script>
+  // Script del carrusel (mantén el que ya tienes)
+  const images = document.querySelectorAll('.carousel img');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach(img => img.classList.remove('active'));
+    images[index].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  // Opcional: auto-cambio en segundos 6000 milisegundos = 6 segundos
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }, 6000);
+
+  // Función de búsqueda
+  function buscarContenido(event) {
+    event.preventDefault(); // Evita que el formulario se envíe
+    
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    if (!searchTerm) return; // No buscar si está vacío
+    
+    // Elementos donde buscaremos (puedes agregar más)
+    const elementos = document.querySelectorAll('h1, h2, h3, p, a, .button');
+    
+    // Limpiar resaltados anteriores
+    document.querySelectorAll('.resaltado').forEach(el => {
+      el.classList.remove('resaltado');
+      el.style.backgroundColor = '';
+    });
+    
+    // Buscar en los elementos
+    let primerElementoEncontrado = null;
+    
+    elementos.forEach(elemento => {
+      if (elemento.innerText.toLowerCase().includes(searchTerm)) {
+        // Resaltar temporalmente
+        elemento.style.backgroundColor = '#ffff99';
+        elemento.style.transition = 'background-color 0.5s';
+        elemento.classList.add('resaltado');
+        
+        // Guardar referencia al primer elemento encontrado
+        if (!primerElementoEncontrado) {
+          primerElementoEncontrado = elemento;
+        }
+      }
+    });
+    
+    // Hacer scroll al primer elemento encontrado
+    if (primerElementoEncontrado) {
+      primerElementoEncontrado.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
+      
+      // Volver al color original después de 3 segundos
+      setTimeout(() => {
+        document.querySelectorAll('.resaltado').forEach(el => {
+          el.style.backgroundColor = '';
+        });
+      }, 3000);
+    }
+  }
+</script>
+
+<footer class="footer">
+  <div class="footer-content">
+    <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
+    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
+  </div>
+</footer>
+
 </body>
 </html>
