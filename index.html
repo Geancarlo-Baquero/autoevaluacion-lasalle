@@ -205,7 +205,7 @@
     transition: background-color 0.5s;
   }
 
-   /* 📱 Responsive para celulares */
+   /* Responsive para celulares */
  @media (max-width: 768px) {
   .carousel {
     height: 350px;
@@ -220,9 +220,17 @@
     margin-bottom: 20px;
   }
   
-  .top-header .search-box {
-    width: 50%; /* Ajuste para tablets */
-  }
+  .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
 }
 
 @media (max-width: 480px) {
@@ -235,18 +243,39 @@
     font-size: 14px;
   }
   
-  .top-header .search-box {
-    width: 40%; /* Ajuste para móviles pequeños */
-  }
+  .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
 }
 </style>
 
 </head>
+<link rel="icon" type="image/jpg" href="imagenes/Logo-Universidad-de-La-Salle.jpg">
 <body>
 
   <!-- Franja azul con título -->
   <header>
-    <h1>Autoevaluación Institucional La Salle</h1>
+    <h1>Autoevaluación Institucional - Universidad De La Salle</h1>
   </header>
 
   <!-- Encabezado superior -->
@@ -256,7 +285,7 @@
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
     </form>
     <div class="icons">
-      <span title="Usuario">👤</span>
+      <img src="imagenes/Auto la salle (2.0).png" alt="Usuario" title="Usuario" style="height: 40px; width: auto;">
     </div>
   </div>
 
@@ -368,7 +397,7 @@
 <footer class="footer">
   <div class="footer-content">
     <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
-    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
+    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica - Autoevaluación y Registro Calificado</span>
   </div>
 </footer>
 

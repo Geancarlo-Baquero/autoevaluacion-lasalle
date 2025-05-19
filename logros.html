@@ -2,9 +2,16 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Logros</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
+    body { 
+      font-family: Arial, sans-serif; 
+      padding: 20px; 
+      text-align: center; 
+      margin: 0;
+    }
+    
     /* Franja azul con título */
     header {
       background-color: #003057;
@@ -12,8 +19,38 @@
       padding: 20px;
     }
 
+    .header-content {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .home-link {
+      color: white;
+      text-decoration: none;
+      position: absolute;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+    }
+
+    .home-link:hover {
+      transform: scale(1.2);
+    }
+
+    .home-icon {
+      font-size: 24px;
+    }
+
     h1 {
-      margin: 0;
+      margin: 0 auto;
+      font-size: 2rem;
+      width: 100%;
+      text-align: center;
     }
 
      /* Encabezado superior */
@@ -51,44 +88,181 @@
       color: #003057;
       cursor: pointer;
     }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
 
     /* Botones */ 
     .button {
       display: block;
-      padding: 10px;
-      margin: 10px auto;
-      background-color: #005baa;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 8px;
       width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      text-align: center;
     }
+    
     .button:hover {
       background-color: #004080;
     }
+    
+    .button:after {
+      content: "▼";
+      position: absolute;
+      right: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .button.abierto {
+      background-color: #004080;
+    }
+    
+    .button.abierto:after {
+      transform: rotate(180deg);
+    }
+
+    /* Estilos para el contenido desplegable */
+    .logro-contenido {
+      display: none;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .logro-contenido h3 {
+      color: #003057;
+      margin-top: 0;
+    }
+    
+    .logro-contenido ul {
+      padding-left: 20px;
+    }
+    
+    .logro-contenido li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
     .footer {
-    background-color: #003057;
-    color: white;
-    padding: 15px 30px;
-  }
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
 
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
-  }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
 
-  .left, .right {
-    font-size: 14px;
-  }
+    .left, .right {
+      font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
 
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }
   </style>
 </head>
 <body>
    <header>
-    <h1>Logros</h1>
+    <div class="header-content">
+      <a href="index.html" class="home-link" title="Volver a inicio">
+        <span class="home-icon">🏢</span>
+      </a>
+      <h1>Logros</h1>
+    </div>
   </header>
 
   <!-- Encabezado superior -->
@@ -98,38 +272,208 @@
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
     </form>
     <div class="icons">
-      <span title="Usuario">👤</span>
+      <img src="imagenes/Auto la salle (2.0).png" alt="Usuario" title="Usuario" style="height: 40px; width: auto;">
     </div>
   </div>
 
   <div id="logrosContainer"></div>
 
   <script>
-    const logros = [
-      "Gestión Institucional",
-      "Académico",
-      "Investigación",
-      "Proyección Social",
-      "Bienestar",
-      "Internacionalización"
+    const logrosPorEje = [ 
+      { 
+        eje: "Gestión Institucional", 
+        logros: [ 
+          "Se fortalecieron los procesos de planeación estratégica.", 
+          "Se implementó un sistema integrado de gestión institucional." 
+        ] 
+      }, 
+      { 
+        eje: "Académico", 
+        logros: [ 
+          "Mejoramiento de los planes de estudio.", 
+          "Fortalecimiento del cuerpo docente." 
+        ] 
+      }, 
+      { 
+        eje: "Investigación", 
+        logros: [ 
+          "Incremento de grupos categorizados en Colciencias.", 
+          "Mayor participación en convocatorias nacionales." 
+        ] 
+      }, 
+      { 
+        eje: "Proyección Social", 
+        logros: [ 
+          "Aumento en el número de convenios con comunidades.", 
+          "Ejecución de proyectos de impacto social." 
+        ] 
+      }, 
+      { 
+        eje: "Bienestar", 
+        logros: [ 
+          "Programas de salud física y mental consolidados.", 
+          "Ampliación de espacios deportivos y culturales." 
+        ] 
+      }, 
+      { 
+        eje: "Internacionalización", 
+        logros: [ 
+          "Participación en redes internacionales.", 
+          "Movilidad estudiantil y docente fortalecida." 
+        ] 
+      } 
     ];
 
     const container = document.getElementById('logrosContainer');
-    logros.forEach((nombre, i) => {
-      const link = document.createElement('a');
-      link.className = 'button';
-      link.href = `logro.html?id=${i + 1}`;
-      link.textContent = `${i + 1}. Eje: ${nombre}`;
-      container.appendChild(link);
+    
+    // Crear los botones de ejes con su contenido desplegable
+    logrosPorEje.forEach((eje, i) => {
+      // Crear un div contenedor para cada eje y su contenido
+      const ejeContainer = document.createElement('div');
+      ejeContainer.className = 'eje-container';
+      
+      // Crear el botón
+      const button = document.createElement('button');
+      button.className = 'button';
+      button.textContent = `${i + 1}. Eje: ${eje.eje}`;
+      button.setAttribute('data-index', i);
+      
+      // Crear el contenedor para el contenido desplegable
+      const contenido = document.createElement('div');
+      contenido.className = 'logro-contenido';
+      contenido.id = `logro-${i}`;
+      
+      // Agregar título
+      const titulo = document.createElement('h3');
+      titulo.textContent = `Eje ${i + 1}: ${eje.eje}`;
+      contenido.appendChild(titulo);
+      
+      // Agregar lista de logros
+      const lista = document.createElement('ul');
+      eje.logros.forEach(logro => {
+        const li = document.createElement('li');
+        li.textContent = logro;
+        lista.appendChild(li);
+      });
+      contenido.appendChild(lista);
+      
+      // Agregar al DOM
+      ejeContainer.appendChild(button);
+      ejeContainer.appendChild(contenido);
+      container.appendChild(ejeContainer);
+      
+      // Agregar evento de clic
+      button.addEventListener('click', function() {
+        const logroId = `logro-${this.getAttribute('data-index')}`;
+        const logroContenido = document.getElementById(logroId);
+        
+        // Cerrar todos los demás
+        document.querySelectorAll('.logro-contenido').forEach(el => {
+          if (el.id !== logroId) {
+            el.classList.remove('activo');
+          }
+        });
+        
+        // Quitar clase 'abierto' de todos los botones
+        document.querySelectorAll('.button').forEach(btn => {
+          if (btn !== this) {
+            btn.classList.remove('abierto');
+          }
+        });
+        
+        // Alternar el estado del actual
+        this.classList.toggle('abierto');
+        logroContenido.classList.toggle('activo');
+        
+        // Hacer scroll al contenido si está abierto
+        if (logroContenido.classList.contains('activo')) {
+          logroContenido.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
+    
+    // Función de búsqueda
+    function buscarContenido(event) {
+      event.preventDefault(); // Evita que el formulario se envíe
+      
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      if (!searchTerm) return; // No buscar si está vacío
+      
+      // Elementos donde buscaremos (puedes agregar más)
+      const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button');
+      
+      // Limpiar resaltados anteriores
+      document.querySelectorAll('.resaltado').forEach(el => {
+        el.classList.remove('resaltado');
+        el.style.backgroundColor = '';
+      });
+      
+      // Buscar en los elementos
+      let primerElementoEncontrado = null;
+      
+      elementos.forEach(elemento => {
+        if (elemento.innerText.toLowerCase().includes(searchTerm)) {
+          // Resaltar temporalmente
+          elemento.style.backgroundColor = '#F2A900';
+          elemento.style.transition = 'background-color 0.5s';
+          elemento.classList.add('resaltado');
+          
+          // Si el elemento está dentro de un contenido desplegable, abrirlo
+          const contenidoPadre = elemento.closest('.logro-contenido');
+          if (contenidoPadre && !contenidoPadre.classList.contains('activo')) {
+            const index = contenidoPadre.id.split('-')[1];
+            const boton = document.querySelector(`.button[data-index="${index}"]`);
+            if (boton) {
+              // Cerrar todos los demás
+              document.querySelectorAll('.logro-contenido').forEach(el => {
+                if (el.id !== contenidoPadre.id) {
+                  el.classList.remove('activo');
+                }
+              });
+              
+              // Quitar clase 'abierto' de todos los botones
+              document.querySelectorAll('.button').forEach(btn => {
+                if (btn !== boton) {
+                  btn.classList.remove('abierto');
+                }
+              });
+              
+              // Abrir el actual
+              boton.classList.add('abierto');
+              contenidoPadre.classList.add('activo');
+            }
+          }
+          
+          // Guardar referencia al primer elemento encontrado
+          if (!primerElementoEncontrado) {
+            primerElementoEncontrado = elemento;
+          }
+        }
+      });
+      
+      // Hacer scroll al primer elemento encontrado
+      if (primerElementoEncontrado) {
+        primerElementoEncontrado.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+        
+        // Volver al color original después de 3 segundos
+        setTimeout(() => {
+          document.querySelectorAll('.resaltado').forEach(el => {
+            el.style.backgroundColor = '';
+          });
+        }, 3000);
+      }
+    }
   </script>
 
   <footer class="footer">
-  <div class="footer-content">
-    <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
-    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
-  </div>
-</footer>
+    <div class="footer-content">
+      <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
+      <span class="right">Dirección de Planeación Estratégica - Centro de Analítica - Autoevaluación y Registro Calificado</span>
+    </div>
+  </footer>
 
 </body>
 </html>

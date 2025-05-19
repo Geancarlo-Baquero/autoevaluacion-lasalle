@@ -246,6 +246,218 @@
       width: 80%;
       max-width: 800px;
       transition: background-color 0.3s;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      text-align: center;
+    }
+    
+    .button:hover {
+      background-color: #004080;
+    }
+    
+    .button:after {
+      content: "▼";
+      position: absolute;
+      right: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .button.abierto {
+      background-color: #004080;
+    }
+    
+    .button.abierto:after {
+      transform: rotate(180deg);
+    }
+    
+    header {
+      background-color: #003057;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    
+    /* Encabezado superior */
+    .top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffffff;
+      padding: 10px 30px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .top-header .logo {
+      height: 50px;
+    }
+
+    #searchForm {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 20px;
+    }
+
+    .top-header .search-box {
+      width: 60%;
+      padding: 8px 15px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .top-header .icons {
+      display: flex;
+      gap: 15px;
+      font-size: 20px;
+      color: #003057;
+      cursor: pointer;
+    }
+    
+    .resaltado {
+      background-color: #F2A900;
+      transition: background-color 0.5s;
+    }
+
+    .footer {
+      background-color: #003057;
+      color: white;
+      padding: 15px 30px;
+      margin-top: 30px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Para que se acomode bien en pantallas pequeñas */
+    }
+
+    .left, .right {
+      font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+      .button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+      }
+      
+      .top-header {
+        padding: 10px 15px;
+      }
+      
+      .top-header .logo {
+        height: 40px;
+      }
+      
+      .top-header .search-box {
+        width: 70%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .button {
+        width: 95%;
+        padding: 10px;
+        font-size: 14px;
+        margin: 10px auto;
+      }
+      
+      .top-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+      }
+      
+      .top-header .logo {
+        height: 35px;
+        margin-bottom: 5px;
+      }
+      
+      #searchForm {
+        width: 100%;
+        margin: 5px 0;
+      }
+      
+      .top-header .search-box {
+        width: 90%;
+      }
+      
+      .top-header .icons {
+        margin-top: 5px;
+      }
+    }
+    
+    /* Estilos para el contenido desplegable */
+    .factor-contenido {
+      display: none;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: left;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .factor-contenido h3 {
+      color: #003057;
+      margin-top: 0;
+    }
+    
+    .factor-contenido ul {
+      padding-left: 20px;
+    }
+    
+    .factor-contenido li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    
+    .activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    /* Modificación del botón para indicar que es desplegable */
+    .button {
+      display: block;
+      padding: 15px;
+      margin: 15px auto;
+      background-color: #003057;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 800px;
+      transition: background-color 0.3s;
     }
     
     .button:hover {
@@ -580,13 +792,75 @@
         margin-top: 5px;
       }
     }
+    /* Estilos para las características desplegables */
+    .caracteristica-item {
+      margin-bottom: 15px;
+      border-left: 3px solid #003057;
+      padding-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      position: relative;
+    }
+    
+    .caracteristica-item:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .caracteristica-item:after {
+      content: "▼";
+      position: absolute;
+      right: 10px;
+      font-size: 12px;
+      transition: transform 0.3s;
+    }
+    
+    .caracteristica-item.abierto:after {
+      transform: rotate(180deg);
+    }
+    
+    .caracteristica-contenido {
+      display: none;
+      background-color: #ffffff;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px 0 10px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .caracteristica-contenido.activo {
+      display: block;
+      animation: fadeIn 0.5s;
+    }
+    
+    .caracteristica-imagen {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+      border-radius: 5px;
+    }
+    
+    .cuestionario-link {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #003057;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .cuestionario-link:hover {
+      background-color: #004080;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="header-content">
       <a href="index.html" class="home-link" title="Volver a inicio">
-        <span class="home-icon">🏠</span>
+        <span class="home-icon">🏢</span>
       </a>
       <h1>Factores</h1>
     </div>
@@ -599,7 +873,7 @@
       <input type="text" placeholder="Buscar..." class="search-box" id="searchInput">
     </form>
     <div class="icons">
-      <span title="Usuario">👤</span>
+      <img src="imagenes/Auto la salle (2.0).png" alt="Usuario" title="Usuario" style="height: 40px; width: auto;">
     </div>
   </div>
 
@@ -610,92 +884,224 @@
     const factores = [
       {
         nombre: "Identidad Institucional",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR1",
         caracteristicas: [
-          "Característica 1. Coherencia y pertinencia de la misión.",
-          "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces.",
-          "Característica 3. Formación integral y construcción de identidad."
+          {
+            nombre: "Característica 1. Coherencia y pertinencia de la misión.",
+            descripcion: "Esta característica evalúa la coherencia entre la misión institucional y las actividades académicas desarrolladas por la institución.",
+            imagen: "imagenes/caracteristica1.jpg"
+          },
+          {
+            nombre: "Característica 2. Orientaciones y estrategias del proyecto educativo institucional o lo que haga sus veces.",
+            descripcion: "Evalúa cómo el proyecto educativo institucional orienta las funciones sustantivas de la universidad.",
+            imagen: "imagenes/caracteristica2.jpg"
+          },
+          {
+            nombre: "Característica 3. Formación integral y construcción de identidad.",
+            descripcion: "Analiza cómo la institución promueve la formación integral de sus estudiantes y construye una identidad institucional.",
+            imagen: "imagenes/caracteristica3.jpg"
+          }
         ]
       },
       {
         nombre: "Gobierno Institucional y Transparencia",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR2",
         caracteristicas: [
-          "Característica 4. Buen gobierno y máximo órgano de gobierno.",
-          "Característica 5. Relación con grupos de interés.",
-          "Característica 6. Rendición de cuentas."
+          {
+            nombre: "Característica 4. Buen gobierno y máximo órgano de gobierno.",
+            descripcion: "Evalúa la estructura y funcionamiento de los órganos de gobierno institucional.",
+            imagen: "imagenes/caracteristica4.jpg"
+          },
+          {
+            nombre: "Característica 5. Relación con grupos de interés.",
+            descripcion: "Analiza cómo la institución se relaciona con sus diferentes grupos de interés.",
+            imagen: "imagenes/caracteristica5.jpg"
+          },
+          {
+            nombre: "Característica 6. Rendición de cuentas.",
+            descripcion: "Evalúa los mecanismos de rendición de cuentas implementados por la institución.",
+            imagen: "imagenes/caracteristica6.jpg"
+          }
         ]
       },
       {
         nombre: "Desarrollo, Gestión y Sostenibilidad Institucional",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR3",
         caracteristicas: [
-          "Característica 7. Administración y gestión.",
-          "Característica 8. Procesos de comunicación.",
-          "Característica 9. Capacidad de gestión financiera."
+          {
+            nombre: "Característica 7. Administración y gestión.",
+            descripcion: "Evalúa los procesos administrativos y de gestión de la institución.",
+            imagen: "imagenes/caracteristica7.jpg"
+          },
+          {
+            nombre: "Característica 8. Procesos de comunicación.",
+            descripcion: "Analiza los mecanismos de comunicación interna y externa de la institución.",
+            imagen: "imagenes/caracteristica8.jpg"
+          },
+          {
+            nombre: "Característica 9. Capacidad de gestión financiera.",
+            descripcion: "Evalúa la gestión financiera y la sostenibilidad económica de la institución.",
+            imagen: "imagenes/caracteristica9.jpg"
+          }
         ]
       },
       {
         nombre: "Mejoramiento Continuo y Autorregulación",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR4",
         caracteristicas: [
-          "Característica 10. Sistemas de autoevaluación.",
-          "Característica 11. Aseguramiento interno de la calidad.",
-          "Característica 12. Resultados de la autorregulación."
+          {
+            nombre: "Característica 10. Sistemas de autoevaluación.",
+            descripcion: "Analiza los sistemas de autoevaluación implementados por la institución.",
+            imagen: "imagenes/caracteristica10.jpg"
+          },
+          {
+            nombre: "Característica 11. Aseguramiento interno de la calidad.",
+            descripcion: "Evalúa los mecanismos de aseguramiento interno de la calidad.",
+            imagen: "imagenes/caracteristica11.jpg"
+          },
+          {
+            nombre: "Característica 12. Resultados de la autorregulación.",
+            descripcion: "Analiza los resultados de los procesos de autorregulación institucional.",
+            imagen: "imagenes/caracteristica12.jpg"
+          }
         ]
       },
       {
         nombre: "Estructura y Procesos Académicos",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR5",
         caracteristicas: [
-          "Característica 13. Políticas académicas.",
-          "Característica 14. Gestión de la actividad académica.",
-          "Característica 15. Procesos de creación, modificación y ampliación de programas académicos."
+          {
+            nombre: "Característica 13. Políticas académicas.",
+            descripcion: "Evalúa las políticas académicas de la institución.",
+            imagen: "imagenes/caracteristica13.jpg"
+          },
+          {
+            nombre: "Característica 14. Gestión de la actividad académica.",
+            descripcion: "Analiza la gestión de las actividades académicas institucionales.",
+            imagen: "imagenes/caracteristica14.jpg"
+          },
+          {
+            nombre: "Característica 15. Procesos de creación, modificación y ampliación de programas académicos.",
+            descripcion: "Evalúa los procesos relacionados con la creación y modificación de programas académicos.",
+            imagen: "imagenes/caracteristica15.jpg"
+          }
         ]
       },
       {
         nombre: "Aportes de la Investigación, la Innovación, el Desarrollo Tecnológico y la Creación al Entorno",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR6",
         caracteristicas: [
-          "Característica 16. Formación para la investigación.",
-          "Característica 17. Investigación, desarrollo tecnológico, innovación y creación."
+          {
+            nombre: "Característica 16. Formación para la investigación.",
+            descripcion: "Analiza los procesos de formación para la investigación en la institución.",
+            imagen: "imagenes/caracteristica16.jpg"
+          },
+          {
+            nombre: "Característica 17. Investigación, desarrollo tecnológico, innovación y creación.",
+            descripcion: "Evalúa los procesos de investigación, desarrollo tecnológico e innovación institucional.",
+            imagen: "imagenes/caracteristica17.jpg"
+          }
         ]
       },
       {
         nombre: "Impacto Social",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR7",
         caracteristicas: [
-          "Característica 18. Institución y entorno.",
-          "Característica 19. Graduados."
+          {
+            nombre: "Característica 18. Institución y entorno.",
+            descripcion: "Analiza la relación de la institución con su entorno social y productivo.",
+            imagen: "imagenes/caracteristica18.jpg"
+          },
+          {
+            nombre: "Característica 19. Graduados.",
+            descripcion: "Evalúa la relación de la institución con sus graduados y su impacto en la sociedad.",
+            imagen: "imagenes/caracteristica19.jpg"
+          }
         ]
       },
       {
         nombre: "Visibilidad Nacional e Internacional",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR8",
         caracteristicas: [
-          "Característica 20. Inserción de la institución en contextos académicos nacionales e internacionales."
+          {
+            nombre: "Característica 20. Inserción de la institución en contextos académicos nacionales e internacionales.",
+            descripcion: "Analiza la inserción y proyección de la institución en contextos académicos nacionales e internacionales.",
+            imagen: "imagenes/caracteristica20.jpg"
+          }
         ]
       },
       {
         nombre: "Bienestar Institucional",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR9",
         caracteristicas: [
-          "Característica 21. Estructura y funcionamiento del bienestar institucional."
+          {
+            nombre: "Característica 21. Estructura y funcionamiento del bienestar institucional.",
+            descripcion: "Evalúa la estructura y funcionamiento de los servicios de bienestar institucional.",
+            imagen: "imagenes/caracteristica21.jpg"
+          }
         ]
       },
       {
         nombre: "Comunidad de Profesores",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR10",
         caracteristicas: [
-          "Característica 22. Derechos y deberes de los profesores.",
-          "Característica 23. Planta profesoral.",
-          "Característica 24. Trayectoria profesoral.",
-          "Característica 25. Desarrollo profesoral."
+          {
+            nombre: "Característica 22. Derechos y deberes de los profesores.",
+            descripcion: "Analiza los derechos y deberes de los profesores establecidos por la institución.",
+            imagen: "imagenes/caracteristica22.jpg"
+          },
+          {
+            nombre: "Característica 23. Planta profesoral.",
+            descripcion: "Evalúa la composición y características de la planta profesoral.",
+            imagen: "imagenes/caracteristica23.jpg"
+          },
+          {
+            nombre: "Característica 24. Trayectoria profesoral.",
+            descripcion: "Analiza la trayectoria y desarrollo profesional de los profesores.",
+            imagen: "imagenes/caracteristica24.jpg"
+          },
+          {
+            nombre: "Característica 25. Desarrollo profesoral.",
+            descripcion: "Evalúa las políticas y programas de desarrollo profesoral.",
+            imagen: "imagenes/caracteristica25.jpg"
+          }
         ]
       },
       {
         nombre: "Comunidad de Estudiantes",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR11",
         caracteristicas: [
-          "Característica 26. Derechos y deberes de los estudiantes.",
-          "Característica 27. Admisión y permanencia de estudiantes.",
-          "Característica 28. Estímulos y apoyos para estudiantes."
+          {
+            nombre: "Característica 26. Derechos y deberes de los estudiantes.",
+            descripcion: "Analiza los derechos y deberes de los estudiantes establecidos por la institución.",
+            imagen: "imagenes/caracteristica26.jpg"
+          },
+          {
+            nombre: "Característica 27. Admisión y permanencia de estudiantes.",
+            descripcion: "Evalúa las políticas y mecanismos de admisión y permanencia de estudiantes.",
+            imagen: "imagenes/caracteristica27.jpg"
+          },
+          {
+            nombre: "Característica 28. Estímulos y apoyos para estudiantes.",
+            descripcion: "Analiza los programas de estímulos y apoyos para los estudiantes.",
+            imagen: "imagenes/caracteristica28.jpg"
+          }
         ]
       },
       {
         nombre: "Comunidad de Egresados",
+        formUrl: "TU_ENLACE_DE_GOOGLE_FORMS_FACTOR12",
         caracteristicas: [
-          "Característica 29. Seguimiento a egresados.",
-          "Característica 30. Experiencia del egresado en la dinámica institucional."
+          {
+            nombre: "Característica 29. Seguimiento a egresados.",
+            descripcion: "Evalúa los mecanismos de seguimiento a egresados implementados por la institución.",
+            imagen: "imagenes/caracteristica29.jpg"
+          },
+          {
+            nombre: "Característica 30. Experiencia del egresado en la dinámica institucional.",
+            descripcion: "Analiza la participación de los egresados en la dinámica institucional.",
+            imagen: "imagenes/caracteristica30.jpg"
+          }
         ]
       }
     ];
@@ -724,14 +1130,88 @@
       titulo.textContent = `${i + 1}. ${factor.nombre}`;
       contenido.appendChild(titulo);
       
-      // Agregar lista de características
+      // No agregamos el enlace al cuestionario aquí, solo al final
+      
+      // Agregar lista de características con desglose
       const lista = document.createElement('ul');
-      factor.caracteristicas.forEach(c => {
+      
+      // Verificar si las características son objetos o strings
+      factor.caracteristicas.forEach((caracteristica, j) => {
         const li = document.createElement('li');
-        li.textContent = c;
+        li.className = 'caracteristica-item';
+        
+        // Si la característica es un objeto, usar su propiedad nombre
+        if (typeof caracteristica === 'object') {
+          li.textContent = caracteristica.nombre;
+          
+          // Crear el contenido desplegable de la característica
+          const caracteristicaContenido = document.createElement('div');
+          caracteristicaContenido.className = 'caracteristica-contenido';
+          caracteristicaContenido.id = `caracteristica-${i}-${j}`;
+          
+          // Agregar descripción
+          if (caracteristica.descripcion) {
+            const descripcion = document.createElement('p');
+            descripcion.textContent = caracteristica.descripcion;
+            caracteristicaContenido.appendChild(descripcion);
+          }
+          
+          // Agregar imagen (si existe)
+          if (caracteristica.imagen) {
+            const imagen = document.createElement('img');
+            imagen.src = caracteristica.imagen;
+            imagen.alt = `Imagen de ${caracteristica.nombre}`;
+            imagen.className = 'caracteristica-imagen';
+            caracteristicaContenido.appendChild(imagen);
+          }
+          
+          // Agregar el contenido desplegable al elemento de lista
+          li.appendChild(caracteristicaContenido);
+          
+          // Agregar evento de clic para desplegar el contenido de la característica
+          li.addEventListener('click', function(e) {
+            // Evitar que el clic se propague si es dentro del contenido ya desplegado
+            if (e.target.closest('.caracteristica-contenido')) {
+              return;
+            }
+            
+            // Alternar la clase 'abierto' para el elemento de lista
+            this.classList.toggle('abierto');
+            
+            // Alternar la visibilidad del contenido
+            const caracteristicaContenido = this.querySelector('.caracteristica-contenido');
+            if (caracteristicaContenido) {
+              caracteristicaContenido.classList.toggle('activo');
+            }
+          });
+        } else {
+          // Si la característica es un string, usarla directamente
+          li.textContent = caracteristica;
+        }
+        
         lista.appendChild(li);
       });
+      
       contenido.appendChild(lista);
+      
+      // Agregar enlace al cuestionario del factor AL FINAL
+      if (factor.formUrl) {
+        const cuestionarioContainer = document.createElement('div');
+        cuestionarioContainer.style.marginTop = '30px';
+        cuestionarioContainer.style.textAlign = 'center';
+        
+        const cuestionarioLink = document.createElement('a');
+        cuestionarioLink.href = factor.formUrl;
+        cuestionarioLink.target = '_blank';
+        cuestionarioLink.className = 'cuestionario-link';
+        cuestionarioLink.innerHTML = `
+          <img src="imagenes/cuestionario.png" alt="Cuestionario" style="height: 20px; width: auto; vertical-align: middle; margin-right: 8px;">
+          Responder cuestionario sobre ${factor.nombre}
+        `;
+        
+        cuestionarioContainer.appendChild(cuestionarioLink);
+        contenido.appendChild(cuestionarioContainer);
+      }
       
       // Agregar el botón y su contenido al contenedor
       factorContainer.appendChild(link);
@@ -770,15 +1250,15 @@
       });
     });
     
-    // Función de búsqueda
+    // Función de búsqueda mejorada para incluir características
     function buscarContenido(event) {
       event.preventDefault(); // Evita que el formulario se envíe
       
       const searchTerm = document.getElementById('searchInput').value.toLowerCase();
       if (!searchTerm) return; // No buscar si está vacío
       
-      // Elementos donde buscaremos (puedes agregar más)
-      const elementos = document.querySelectorAll('h1, h2, h3, p, a, .button');
+      // Elementos donde buscaremos
+      const elementos = document.querySelectorAll('h1, h2, h3, p, li, .button, .caracteristica-item');
       
       // Limpiar resaltados anteriores
       document.querySelectorAll('.resaltado').forEach(el => {
@@ -795,6 +1275,27 @@
           elemento.style.backgroundColor = '#F2A900';
           elemento.style.transition = 'background-color 0.5s';
           elemento.classList.add('resaltado');
+          
+          // Si el elemento está dentro de un contenido desplegable, abrirlo
+          const factorContenidoPadre = elemento.closest('.factor-contenido');
+          if (factorContenidoPadre && !factorContenidoPadre.classList.contains('activo')) {
+            const index = factorContenidoPadre.id.split('-')[1];
+            const boton = document.querySelector(`.button[data-index="${index}"]`);
+            if (boton) {
+              // Abrir el factor
+              boton.classList.add('abierto');
+              factorContenidoPadre.classList.add('activo');
+            }
+          }
+          
+          // Si el elemento es una característica, abrir su contenido
+          if (elemento.classList.contains('caracteristica-item')) {
+            elemento.classList.add('abierto');
+            const caracteristicaContenido = elemento.querySelector('.caracteristica-contenido');
+            if (caracteristicaContenido) {
+              caracteristicaContenido.classList.add('activo');
+            }
+          }
           
           // Guardar referencia al primer elemento encontrado
           if (!primerElementoEncontrado) {
@@ -823,7 +1324,7 @@
   <footer class="footer">
   <div class="footer-content">
     <span class="left">Universidad de La Salle - Autoevaluación Institucional © 2025</span>
-    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica</span>
+    <span class="right">Dirección de Planeación Estratégica - Centro de Analítica - Autoevaluación y Registro Calificado</span>
   </div>
 </footer>
 
